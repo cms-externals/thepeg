@@ -8,7 +8,7 @@ INCLUDEFILES = $(DOCFILES) LesHouchesReader.fh \
                LesHouchesFileReader.fh \
                 LesHouchesEventHandler.fh
 
-pkglib_LTLIBRARIES = LesHouches.la MadGraphReader.la
+pkglib_LTLIBRARIES = libLesHouches.la LesHouches.la MadGraphReader.la
 
 # Version info should be updated if any interface or persistent I/O
 # function is changed
@@ -21,6 +21,11 @@ MadGraphReader_la_SOURCES = MadGraphReader.cc MadGraphReader.h \
 # function is changed
 LesHouches_la_LDFLAGS = $(AM_LDFLAGS) -module $(LIBTOOLVERSIONINFO)
 LesHouches_la_SOURCES = $(mySOURCES) $(INCLUDEFILES)
+
+# Version info should be updated if any interface or persistent I/O
+# function is changed
+libLesHouches_la_LDFLAGS = $(AM_LDFLAGS) -shared $(LIBTOOLVERSIONINFO)
+libLesHouches_la_SOURCES = $(mySOURCES) $(INCLUDEFILES)
 
 include $(top_srcdir)/Config/Makefile.aminclude
 
