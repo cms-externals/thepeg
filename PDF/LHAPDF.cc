@@ -33,6 +33,7 @@
 #include "config.h"
 #include "ThePEG/Persistency/PersistentOStream.h"
 #include "ThePEG/Persistency/PersistentIStream.h"
+#include "stdlib.h"
 
 #ifdef ThePEG_HAS_FPU_CONTROL
 #include <fpu_control.h>
@@ -228,7 +229,12 @@ void LHAPDF::checkInit() const {
 
 std::string LHAPDF::getIndexPath() {
   // macro is passed in from -D compile flag
-  return std::string(LHAPDF_PKGDATADIR) + "/PDFsets.index";
+  char const* tmp = getenv( "LHAPATH" );
+  if ( tmp != NULL ) {
+    return std::string(getenv("LHAPATH")) + "/../PDFsets.index";
+  } else {
+    return std::string(LHAPDF_PKGDATADIR) + "/PDFsets.index";
+  };
 }
 
 bool LHAPDF::openLHAIndex(ifstream & is) {
