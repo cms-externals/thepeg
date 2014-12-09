@@ -14,6 +14,7 @@
 #include "ACDCTraits.h"
 #include "ACDCGenCell.h"
 #include "ThePEG/Utilities/Exception.h"
+#include <algorithm>
 
 namespace ACDCGenerator {
 
