@@ -106,6 +106,9 @@ using std::mem_fun;
 using std::sqrt;
 //using std::pow;
 using std::atan2;
+// For PersistentOStream.h
+using std::isinf;
+using std::isnan;
 
 /** Powers - standard or non-standard */
 template <class ExponentT>
